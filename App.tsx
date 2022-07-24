@@ -7,6 +7,7 @@ import Colors from './constants/color';
 import GameOverScreen from './screens/GameOverScreen';
 import { useFonts } from 'expo-font';
 import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 
 preventAutoHideAsync();
 
@@ -65,19 +66,22 @@ const App = () => {
     }
 
     return (
-        <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}
-                        onLayout={onLayoutRootView}>
-            <ImageBackground
-                source={require('./assets/images/background.png')}
-                resizeMode='cover'
-                style={styles.rootScreen}
-                imageStyle={styles.backgroundImage}
-            >
-                <SafeAreaView style={styles.rootScreen}>
-                    {screen}
-                </SafeAreaView>
-            </ImageBackground>
-        </LinearGradient>
+        <>
+            <StatusBar style='light' />
+            <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}
+                            onLayout={onLayoutRootView}>
+                <ImageBackground
+                    source={require('./assets/images/background.png')}
+                    resizeMode='cover'
+                    style={styles.rootScreen}
+                    imageStyle={styles.backgroundImage}
+                >
+                    <SafeAreaView style={styles.rootScreen}>
+                        {screen}
+                    </SafeAreaView>
+                </ImageBackground>
+            </LinearGradient>
+        </>
     );
 };
 
